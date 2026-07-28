@@ -99,7 +99,7 @@
 
     <div class="container" id="mainCard">
         <div class="gif-box">
-            <!-- İlk açılıştaki o tatlı orijinal kedi -->
+            <!-- İlk açılıştaki o çok sevdiğin sevimli kedi GIF'i -->
             <img id="kediGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Y2ZTZ3NW8ybXUyeTBya282ZHFydWV2ZzZ4eXlzNWNqZDVyc3poNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Sevimli Kedi">
         </div>
         
@@ -115,18 +115,9 @@
     <script>
         let evetBoyut = 1;
 
-        // Garantili çalışan, ağlayan/üzülen yedek kedi GIF'leri
-        const uzgunGis = [
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1ZHZncHRqNDIxcTJvOTh0dnJzc3BzZHoxOGF2czd2ZnptMmdqOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7bu3XilJ5BOiSGic/giphy.gif",
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3U4ZmczZ291M2tveThpZHZ3NTV3ZmY5NzhvZGF4bnJiaDNpdHZxaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L954388sM485G/giphy.gif",
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNndxYjEycWR1ZDRuNm9yMHpjaTlpcXltZnFjbm1wZGFwbWZibjlyeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/d2lcHJTG5Tscg/giphy.gif"
-        ];
-        let gifIndex = 0;
-
         function kac() {
             const hayirBtn = document.getElementById('hayirBtn');
             const evetBtn = document.getElementById('evetBtn');
-            const kediGif = document.getElementById('kediGif');
             
             // Hayır butonunu rastgele kaçır
             const x = Math.floor(Math.random() * (window.innerWidth - 100));
@@ -136,17 +127,13 @@
             hayirBtn.style.left = x + 'px';
             hayirBtn.style.top = y + 'px';
 
-            // Evet butonunu devleştir
+            // Evet butonunu büyüt
             evetBoyut += 0.3;
             evetBtn.style.transform = `scale(${evetBoyut})`;
-
-            // Kediyi üzgün hale getir
-            kediGif.src = uzgunGis[gifIndex];
-            gifIndex = (gifIndex + 1) % uzgunGis.length;
         }
 
         function kabulEt() {
-            // Mutlu kedi
+            // Evet'e basınca sevimli mutlu kediye dönüşür
             document.getElementById('kediGif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3BvYWw2cDVvbmJjNXo0aXNwaXNxbTNzNmhyNHMxaTFkOHI4MnFhbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26hpW3p8XNlG6dK0w/giphy.gif";
             document.getElementById('baslik').innerText = "Yaa biliyordum! ❤️🥰";
             document.getElementById('altBaslik').innerText = "Seni çok seviyorum!";

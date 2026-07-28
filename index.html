@@ -40,10 +40,11 @@
         }
 
         .gif-box img {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             object-fit: contain;
             margin-bottom: 20px;
+            border-radius: 10px;
         }
 
         h1 {
@@ -106,17 +107,28 @@
         
         <div class="btn-group" id="btnGroup">
             <button class="btn-evet" id="evetBtn" onclick="kabulEt()">evet</button>
-            <button class="btn-hayir" id="hayirBtn" onmouseover="kac()" ontouchstart="kac()">hayır</button>
+            <button class="btn-hayir" id="hayirBtn" onmouseover="kac()" ontouchstart="kac()" onclick="kac()">hayır</button>
         </div>
     </div>
 
     <script>
         let evetBoyut = 1;
 
+        // "Hayır"a her basıldığında/yaklaşıldığında sırayla değişecek üzgün kedi GIF'leri
+        const uzgunGis = [
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1ZHZncHRqNDIxcTJvOTh0dnJzc3BzZHoxOGF2czd2ZnptMmdqOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7bu3XilJ5BOiSGic/giphy.gif",
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3U4ZmczZ291M2tveThpZHZ3NTV3ZmY5NzhvZGF4bnJiaDNpdHZxaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L954388sM485G/giphy.gif",
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNndxYjEycWR1ZDRuNm9yMHpjaTlpcXltZnFjbm1wZGFwbWZibjlyeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/d2lcHJTG5Tscg/giphy.gif",
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHAzeWV6aXB4OTlhOHV3cnlxbTJ1aHdzYzUxd3V2OW55ZjZzcTVuNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/OPU6wzx8JrHna/giphy.gif"
+        ];
+        let gifIndex = 0;
+
         function kac() {
             const hayirBtn = document.getElementById('hayirBtn');
             const evetBtn = document.getElementById('evetBtn');
+            const kediGif = document.getElementById('kediGif');
             
+            // Hayır butonunu kaçır
             const x = Math.floor(Math.random() * (window.innerWidth - 100));
             const y = Math.floor(Math.random() * (window.innerHeight - 50));
             
@@ -124,11 +136,17 @@
             hayirBtn.style.left = x + 'px';
             hayirBtn.style.top = y + 'px';
 
+            // Evet butonunu büyüt
             evetBoyut += 0.3;
             evetBtn.style.transform = `scale(${evetBoyut})`;
+
+            // Her hamlede üzülen görseli değiştir
+            kediGif.src = uzgunGis[gifIndex];
+            gifIndex = (gifIndex + 1) % uzgunGis.length;
         }
 
         function kabulEt() {
+            // Evet'e basınca mutlu kedi çıkar
             document.getElementById('kediGif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3BvYWw2cDVvbmJjNXo0aXNwaXNxbTNzNmhyNHMxaTFkOHI4MnFhbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26hpW3p8XNlG6dK0w/giphy.gif";
             document.getElementById('baslik').innerText = "Yaa biliyordum! ❤️🥰";
             document.getElementById('altBaslik').innerText = "Seni çok seviyorum!";

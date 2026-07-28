@@ -11,6 +11,9 @@
     <!-- Monetag In-Page Push Reklam Kodun -->
     <script>(function(s){s.dataset.zone='11446417',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 
+    <!-- Konfeti Efekti İçin Kütüphane -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -37,6 +40,7 @@
             max-width: 380px;
             width: 90%;
             position: relative;
+            z-index: 10;
         }
 
         .gif-box img {
@@ -99,7 +103,6 @@
 
     <div class="container" id="mainCard">
         <div class="gif-box">
-            <!-- İlk açılıştaki o çok sevdiğin sevimli kedi GIF'i -->
             <img id="kediGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Y2ZTZ3NW8ybXUyeTBya282ZHFydWV2ZzZ4eXlzNWNqZDVyc3poNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Sevimli Kedi">
         </div>
         
@@ -114,10 +117,13 @@
 
     <script>
         let evetBoyut = 1;
+        let hayirSayaci = 0;
 
         function kac() {
             const hayirBtn = document.getElementById('hayirBtn');
             const evetBtn = document.getElementById('evetBtn');
+            const baslik = document.getElementById('baslik');
+            const altBaslik = document.getElementById('altBaslik');
             
             // Hayır butonunu rastgele kaçır
             const x = Math.floor(Math.random() * (window.innerWidth - 100));
@@ -130,10 +136,34 @@
             // Evet butonunu büyüt
             evetBoyut += 0.3;
             evetBtn.style.transform = `scale(${evetBoyut})`;
+
+            // Basılma sayısına göre yazıları değiştir
+            hayirSayaci++;
+
+            if (hayirSayaci === 1) {
+                baslik.innerText = "Özledim Barışalım mı?";
+                altBaslik.innerText = "Küs kalmaya gerek yok bence 🥺";
+            } else if (hayirSayaci === 2) {
+                baslik.innerText = "EMİN MİSİN?";
+                altBaslik.innerText = "BİR DAHA DÜŞÜN BENCE";
+            } else if (hayirSayaci === 3) {
+                baslik.innerText = "GERÇEKTEN Mİ?";
+                altBaslik.innerText = "KIRILIYORUM AMA";
+            } else {
+                baslik.innerText = "HADİ EVETE BAS";
+                altBaslik.innerText = "EVETE BASMAN GEREKİYOR";
+            }
         }
 
         function kabulEt() {
-            // Evet'e basınca sevimli mutlu kediye dönüşür
+            // Konfeti patlat
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: { y: 0.6 }
+            });
+
+            // Mutlu kedi ve sonuç ekranı
             document.getElementById('kediGif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3BvYWw2cDVvbmJjNXo0aXNwaXNxbTNzNmhyNHMxaTFkOHI4MnFhbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26hpW3p8XNlG6dK0w/giphy.gif";
             document.getElementById('baslik').innerText = "Yaa biliyordum! ❤️🥰";
             document.getElementById('altBaslik').innerText = "Seni çok seviyorum!";

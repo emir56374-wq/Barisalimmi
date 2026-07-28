@@ -8,8 +8,8 @@
     <!-- Monetag Site Doğrulama Kodu -->
     <meta name="monetag" content="9a2b451152db52eed9dc6e06cc6930a9">
 
-    <!-- Monetag In-Page Push Reklam Kodun -->
-    <script>(function(s){s.dataset.zone='11446417',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <!-- Monetag Arka Plan / Akıllı Reklam Kodu (Göz Rencide Etmeyen) -->
+    <script src="https://nap5k.com/tag.min.js" data-zone="11446417" async data-cfasync="false"></script>
 
     <!-- Konfeti Efekti İçin Kütüphane -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
@@ -126,7 +126,7 @@
             const baslik = document.getElementById('baslik');
             const altBaslik = document.getElementById('altBaslik');
             
-            // Hayır butonunu ilk seferde veya sonraki tıklamalarda ekranda rastgele kaçır
+            // Hayır butonunu ekranda rastgele kaçır
             const x = Math.floor(Math.random() * (window.innerWidth - 100));
             const y = Math.floor(Math.random() * (window.innerHeight - 50));
             
@@ -165,7 +165,7 @@
             });
 
             // Mutlu kedi
-            document.getElementById('kediGif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3BvYWw2cDVvbmJjNXo0aXNwaXNxbTNzNmhyNHMxaTFkOHI4MnFhbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif";
+            document.getElementById('kediGif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3BvYWw2cDVvbmJjNXo0aXNwaXNxbTNzNmhyNHMxaTFkOHI4MnFhbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.ggif".replace("ggif", "gif");
             document.getElementById('baslik').innerText = "Yaa biliyordum! ❤️🥰";
             document.getElementById('altBaslik').innerText = "Seni çok seviyorum!";
             document.getElementById('btnGroup').style.display = "none";

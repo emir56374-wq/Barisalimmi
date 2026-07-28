@@ -34,6 +34,7 @@
             max-width: 380px;
             width: 90%;
             position: relative;
+            z-index: 1;
         }
 
         .gif-box img {
@@ -58,43 +59,35 @@
         .btn-group {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 20px;
             position: relative;
-            min-height: 50px;
+            min-height: 60px;
         }
 
         button {
-            padding: 12px 30px;
+            padding: 12px 25px;
             font-size: 18px;
             font-weight: bold;
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform 0.2s ease, font-size 0.2s ease;
         }
 
         .btn-evet {
             background-color: #8e24aa;
             color: white;
             box-shadow: 0 4px 15px rgba(142, 36, 170, 0.3);
+            z-index: 999;
         }
 
         .btn-hayir {
-            background-color: #8e24aa;
+            background-color: #e91e63;
             color: white;
-            box-shadow: 0 4px 15px rgba(142, 36, 170, 0.3);
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
             position: absolute;
-            right: 40px;
-        }
-
-        .success-msg {
-            display: none;
-        }
-
-        .success-msg h2 {
-            color: #e91e63;
-            font-size: 26px;
-            margin-top: 15px;
+            z-index: 998;
         }
     </style>
 </head>
@@ -109,20 +102,29 @@
         <p id="altBaslik">Küs kalmaya gerek yok bence 🥺</p>
         
         <div class="btn-group" id="btnGroup">
-            <button class="btn-evet" onclick="kabulEt()">evet</button>
-            <button class="btn-hayir" id="hayirBtn" onmouseover="kac()" onclick="kac()" ontouchstart="kac()">hayır</button>
+            <button class="btn-evet" id="evetBtn" onclick="kabulEt()">evet</button>
+            <button class="btn-hayir" id="hayirBtn" onmouseover="kac()" ontouchstart="kac()">hayır</button>
         </div>
     </div>
 
     <script>
+        let evetBoyut = 1;
+
         function kac() {
-            const btn = document.getElementById('hayirBtn');
+            const hayirBtn = document.getElementById('hayirBtn');
+            const evetBtn = document.getElementById('evetBtn');
+            
+            // Hayır butonunu rastgele yere kaçır
             const x = Math.floor(Math.random() * (window.innerWidth - 120));
             const y = Math.floor(Math.random() * (window.innerHeight - 60));
             
-            btn.style.position = 'fixed';
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
+            hayirBtn.style.position = 'fixed';
+            hayirBtn.style.left = x + 'px';
+            hayirBtn.style.top = y + 'px';
+
+            // Evet butonunu gitgide büyüt
+            evetBoyut += 0.35;
+            evetBtn.style.transform = `scale(${evetBoyut})`;
         }
 
         function kabulEt() {

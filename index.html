@@ -110,6 +110,7 @@
         <p id="altBaslik">Küs kalmaya gerek yok bence 🥺</p>
         
         <div class="btn-group" id="btnGroup">
+            <!-- Sıralama: Önce Evet, yanında Hayır -->
             <button class="btn-evet" id="evetBtn" onclick="kabulEt()">evet</button>
             <button class="btn-hayir" id="hayirBtn" onmouseover="kac()" ontouchstart="kac()" onclick="kac()">hayır</button>
         </div>
@@ -125,7 +126,7 @@
             const baslik = document.getElementById('baslik');
             const altBaslik = document.getElementById('altBaslik');
             
-            // Hayır butonunu kaçır
+            // Hayır butonunu ilk seferde veya sonraki tıklamalarda ekranda rastgele kaçır
             const x = Math.floor(Math.random() * (window.innerWidth - 100));
             const y = Math.floor(Math.random() * (window.innerHeight - 50));
             
@@ -137,7 +138,7 @@
             evetBoyut += 0.3;
             evetBtn.style.transform = `scale(${evetBoyut})`;
 
-            // Basılma sayısına göre yazıları değiştir
+            // Basılma sayısına göre yazıları güncelle
             hayirSayaci++;
 
             if (hayirSayaci === 1) {
@@ -163,7 +164,7 @@
                 origin: { y: 0.6 }
             });
 
-            // Kesinlikle çalışan mutlu kedi GIF'i
+            // Mutlu kedi
             document.getElementById('kediGif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3BvYWw2cDVvbmJjNXo0aXNwaXNxbTNzNmhyNHMxaTFkOHI4MnFhbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif";
             document.getElementById('baslik').innerText = "Yaa biliyordum! ❤️🥰";
             document.getElementById('altBaslik').innerText = "Seni çok seviyorum!";

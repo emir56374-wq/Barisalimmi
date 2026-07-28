@@ -34,7 +34,6 @@
             max-width: 380px;
             width: 90%;
             position: relative;
-            z-index: 1;
         }
 
         .gif-box img {
@@ -79,15 +78,16 @@
             background-color: #8e24aa;
             color: white;
             box-shadow: 0 4px 15px rgba(142, 36, 170, 0.3);
-            z-index: 999;
+            position: relative;
+            z-index: 1; /* Evet butonu altta kalsın */
         }
 
         .btn-hayir {
             background-color: #e91e63;
             color: white;
             box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
-            position: absolute;
-            z-index: 998;
+            position: relative;
+            z-index: 9999; /* Hayır butonu HER ZAMAN en üstte dursun */
         }
     </style>
 </head>
@@ -114,16 +114,16 @@
             const hayirBtn = document.getElementById('hayirBtn');
             const evetBtn = document.getElementById('evetBtn');
             
-            // Hayır butonunu rastgele yere kaçır
-            const x = Math.floor(Math.random() * (window.innerWidth - 120));
-            const y = Math.floor(Math.random() * (window.innerHeight - 60));
+            // Ekranın herhangi bir yerine kaçır (Kenarlara fazla yapışmasın diye pay bırakıyoruz)
+            const x = Math.floor(Math.random() * (window.innerWidth - 100));
+            const y = Math.floor(Math.random() * (window.innerHeight - 50));
             
             hayirBtn.style.position = 'fixed';
             hayirBtn.style.left = x + 'px';
             hayirBtn.style.top = y + 'px';
 
             // Evet butonunu gitgide büyüt
-            evetBoyut += 0.35;
+            evetBoyut += 0.3;
             evetBtn.style.transform = `scale(${evetBoyut})`;
         }
 

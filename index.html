@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özledim Barışalım mı?</title>
+
+    <!-- Monetag In-Page Push Reklam Kodun -->
+    <script>(function(s){s.dataset.zone='11446417',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fce4ec;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 380px;
+            width: 90%;
+            position: relative;
+        }
+
+        .gif-box img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #d81b60;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #777;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            min-height: 50px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-evet {
+            background-color: #8e24aa;
+            color: white;
+            box-shadow: 0 4px 15px rgba(142, 36, 170, 0.3);
+        }
+
+        .btn-hayir {
+            background-color: #8e24aa;
+            color: white;
+            box-shadow: 0 4px 15px rgba(142, 36, 170, 0.3);
+            position: absolute;
+            right: 40px;
+        }
+
+        .success-msg {
+            display: none;
+        }
+
+        .success-msg h2 {
+            color: #e91e63;
+            font-size: 26px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainCard">
+        <div class="gif-box">
+            <img id="kediGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Y2ZTZ3NW8ybXUyeTBya282ZHFydWV2ZzZ4eXlzNWNqZDVyc3poNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Sevimli Kedi">
+        </div>
+        
+        <h1 id="baslik">Özledim Barışalım mı?</h1>
+        <p id="altBaslik">Küs kalmaya gerek yok bence 🥺</p>
+        
+        <div class="btn-group" id="btnGroup">
+            <button class="btn-evet" onclick="kabulEt()">evet</button>
+            <button class="btn-hayir" id="hayirBtn" onmouseover="kac()" onclick="kac()" ontouchstart="kac()">hayır</button>
+        </div>
+    </div>
+
+    <script>
+        function kac() {
+            const btn = document.getElementById('hayirBtn');
+            const x = Math.floor(Math.random() * (window.innerWidth - 120));
+            const y = Math.floor(Math.random() * (window.innerHeight - 60));
+            
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function kabulEt() {
+            document.getElementById('kediGif').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3BvYWw2cDVvbmJjNXo0aXNwaXNxbTNzNmhyNHMxaTFkOHI4MnFhbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26hpW3p8XNlG6dK0w/giphy.gif";
+            document.getElementById('baslik').innerText = "Yaa biliyordum! ❤️🥰";
+            document.getElementById('altBaslik').innerText = "Seni çok seviyorum!";
+            document.getElementById('btnGroup').style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
